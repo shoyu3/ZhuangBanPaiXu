@@ -6,4 +6,4 @@ B站装扮排序，使用方式和动态抽奖工具差不多
 
 截图：
 
-![image](https://user-images.githubusercontent.com/75879378/118375903-573b8480-b5f7-11eb-8b9f-02e66945efae.png)
+![image](https://user-images.githubusercontent.com/75879378/118375930-83570580-b5f7-11eb-9426-2011669c45f1.png)
