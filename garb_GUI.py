@@ -168,11 +168,13 @@ def getgarblist():
     lbl.configure(text='装扮列表 总数：'+str(len(glist)))
 
 def Refresh():
+    global m
     getgarblist()
     listbox.delete('0',END)
     m=gtext
     for x in m:
         listbox.insert(END, x)
+    listbox.selection_anchor(0)
     tkinter.messagebox.showinfo('提示','刷新完成！')
 
 try:
