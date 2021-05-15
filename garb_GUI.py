@@ -26,8 +26,9 @@ def setIcon(win):
 
 #2021年5月16日03:09:15
 
+version='1.0'
 window = Tk()
-window.title('装扮顺序排列 PythonGUI B站：派蒙月饼')
+window.title('装扮顺序排列 版本'+version+' B站：派蒙月饼')
 #window.geometry("400x600")
 width=390
 heigh=600
