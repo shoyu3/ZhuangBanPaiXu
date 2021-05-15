@@ -165,7 +165,7 @@ def getgarblist():
         #print(str(i+1)+' '+garba['fan']['name']+'(ID:'+str(garba['item']['item_id'])+') 当前展示：NO.'+str(garba['fan']['number']).rjust(6,'0')+' '+garba['fan']['date'])
         #print(str(i+1)+' NO.'+str(garba['fan']['number']).rjust(6,'0')+' '+garba['fan']['name']+'(ID:'+str(garba['item']['item_id'])+') '+garba['fan']['date'])
     #print('----------------------------------------')
-    lbl.configure(text='装扮列表 总数：'+str(len(glist)))
+    lbl.configure(text=name+'装扮列表 总数：'+str(len(glist)))
 
 def Refresh():
     global m
