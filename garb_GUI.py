@@ -135,20 +135,25 @@ def do_garb_sort(g_id_list):
     g_id_list=list(reversed(g_id_list))
     print('由于B站后端问题，需额外等待 '+str(delay*len(g_id_list)+1)+' 秒')
     for i in range(len(g_id_list)):
-        cookie_dict=cookie_to_json(cookie)
-        csrf_token=cookie_dict.get('bili_jct')
-        data={
-        "csrf":csrf_token,
-        "ids":g_id_list[i],
-        }
-        res = requests.post(url='http://api.bilibili.com/x/garb/user/suit/asset/list/sort',data=data,headers=header)
-        message=json.loads(res.text)
-        if not message['code'] == 0:
+        try:
+            cookie_dict=cookie_to_json(cookie)
+            csrf_token=cookie_dict.get('bili_jct')
+            data={
+            "csrf":csrf_token,
+            "ids":g_id_list[i],
+            }
+            res = requests.post(url='http://api.bilibili.com/x/garb/user/suit/asset/list/sort',data=data,headers=header)
+            message=json.loads(res.text)
+            if not message['code'] == 0:
+                chkupdwindow.destroy()
+                tkinter.messagebox.showwarning('提示','装扮排序保存失败，可能会导致顺序错乱！\n返回信息为：'+message['message'])
+                return False
+            chklbl1.configure(text='正在应用修改… (/ω＼*)\n('+str(i+1)+'/'+str(len(g_id_list))+')')
+            time.sleep(delay)
+        except Exception as e:
             chkupdwindow.destroy()
-            tkinter.messagebox.showwarning('提示','装扮排序保存失败，返回信息为：'+message['message'])
+            tkinter.messagebox.showwarning('提示','保存进程意外中止，可能会导致顺序错乱！\n详细错误信息：'+str(repr(e)))
             return False
-        chklbl1.configure(text='正在应用修改… (/ω＼*)\n('+str(i+1)+'/'+str(len(g_id_list))+')')
-        time.sleep(delay)
     chkupdwindow.destroy()
     tkinter.messagebox.showinfo('提示','装扮排序保存成功！')
 
